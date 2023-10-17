@@ -4,10 +4,9 @@ import br.com.alura.forum.dto.DetalhesDoTopicoDto;
 import br.com.alura.forum.dto.TopicoDto;
 import br.com.alura.forum.form.AtualizacaoTopicoForm;
 import br.com.alura.forum.form.TopicoForm;
-import br.com.alura.forum.modelo.Topico;
+import br.com.alura.forum.model.Topico;
 import br.com.alura.forum.repository.CursoRepository;
 import br.com.alura.forum.repository.TopicoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -22,10 +21,14 @@ import java.util.Optional;
 @RequestMapping("/topicos")
 public class TopicosController {
 
-    @Autowired
     private TopicoRepository topicoRepository;
-    @Autowired
+
     private CursoRepository cursoRepository;
+
+    public TopicosController(TopicoRepository topicoRepository, CursoRepository cursoRepository) {
+        this.topicoRepository = topicoRepository;
+        this.cursoRepository = cursoRepository;
+    }
 
     @GetMapping
     public List<TopicoDto> lista(String nomeCurso) {

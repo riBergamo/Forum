@@ -1,8 +1,7 @@
 package br.com.alura.forum.dto;
 
-import br.com.alura.forum.modelo.Resposta;
-import br.com.alura.forum.modelo.StatusTopico;
-import br.com.alura.forum.modelo.Topico;
+import br.com.alura.forum.model.StatusTopico;
+import br.com.alura.forum.model.Topico;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ public class DetalhesDoTopicoDto {
     private LocalDateTime dataCriacao;
     private String nomeAutor;
     private StatusTopico status;
-    private List<RespostaDto> respostas;
 
     public DetalhesDoTopicoDto(Topico topico) {
         this.id = topico.getId();
@@ -26,9 +24,6 @@ public class DetalhesDoTopicoDto {
         this.dataCriacao = topico.getDataCriacao();
         this.nomeAutor = topico.getAutor().getNome();
         this.status = topico.getStatus();
-
-        this.respostas = new ArrayList<>();
-        this.respostas.addAll(topico.getRespostas().stream().map(RespostaDto::new).collect(Collectors.toList()));
 
     }
 
@@ -80,11 +75,4 @@ public class DetalhesDoTopicoDto {
         this.status = status;
     }
 
-    public List<RespostaDto> getRespostas() {
-        return respostas;
-    }
-
-    public void setRespostas(List<RespostaDto> respostas) {
-        this.respostas = respostas;
-    }
 }

@@ -1,6 +1,6 @@
 package br.com.alura.forum.dto;
 
-import br.com.alura.forum.modelo.Topico;
+import br.com.alura.forum.model.Topico;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,6 +12,7 @@ public class TopicoDto {
     private String titulo;
     private String mensagem;
     private LocalDateTime dataCriacao;
+
 
     public TopicoDto(Topico topico) {
         this.id = topico.getId();
